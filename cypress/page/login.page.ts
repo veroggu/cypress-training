@@ -1,20 +1,24 @@
 class LoginPage {
+    private emailselector: string;
+    private passwordselector: string;
     private email: string;
     private password: string;
     private submitlog: string
 
     constructor() {
-        this.email = '#email';
-        this.password = '#passwd';
+        this.emailselector = '#email'
+        this.email = 'aperdomobo@gmail.com'
+        this.passwordselector = '#passwd'
+        this.password = 'WorkshopProtractor'
         this.submitlog = '#SubmitLogin > span'
     }
 
-    public typePassword(): void {
-        cy.get(this.password).type("WorkshopProtractor")
+    public typeEmail(): void {
+        cy.get(this.emailselector).type(this.email)
     }
 
-    public typeEmail(): void {
-        cy.get(this.email).type("aperdomobo@gmail.com")
+    public typePassword(): void {
+        cy.get(this.passwordselector).type(this.password)
     }
 
     public submit(): void {
