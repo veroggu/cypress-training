@@ -1,23 +1,32 @@
+import { MenuContentPage, ProductsListPage, ShopingCartPage, LoginPage, AddressStepPage, ShippingStepPage, PaymentStepPage } from "../page/index"
+
+const menuContentPage = new MenuContentPage()
+const productsListPage = new ProductsListPage()
+const shopingCartPage = new ShopingCartPage()
+const loginPage = new LoginPage("aperdomobo@gmail.com","WorkshopProtractor")
+const addressStepPage = new AddressStepPage()
+const shippingStepPage = new ShippingStepPage()
+const paymentStepPage = new PaymentStepPage("have.text","Your order on My Store is complete.")
+
 describe("Buy a t-shirt", () => {
 
-  it("then the t-shirt should be bought", () => {
-    cy.visit("http://automationpractice.com/")
-    cy.get("#block_top_menu > ul > li:nth-child(3) > a").click()
-    cy.get("#center_column a.button.ajax_add_to_cart_button.btn.btn-default").click()
-    cy.get("[style*=\"display: block;\"] .button-container > a").click()
-    cy.get(".cart_navigation span").click()
+  it("then should be bought a t-shirt", () => {
+    menuContentPage.visitMenuContentPage()
+    menuContentPage.goToTShirtMenu()
+    productsListPage.addTshirtToCart()
+    shopingCartPage.clickProceedToCheckoutPopWindow()
+    shopingCartPage.clickProceedToCheckoutSumaryStep()
 
-    cy.get("#email").type("aperdomobo@gmail.com")
-    cy.get("#passwd").type("WorkshopProtractor")
+    loginPage.typeEmail()
+    loginPage.typePassword()
+    loginPage.submit()
 
-    cy.get("#SubmitLogin > span").click()
-    cy.get("#center_column > form > p > button > span").click()
-    cy.get("#cgv").click()
-    cy.get("#form > p > button > span > i").click()
-    cy.get("#HOOK_PAYMENT > div:nth-child(1) > div > p > a > span").click()
-    cy.get("#cart_navigation > button > span > i").click()
+    addressStepPage.clickProceedButtonAddress()
+    shippingStepPage.acceptTermsAndConditions()
+    shippingStepPage.clickProceedButtonShipping()
+    paymentStepPage.selectPayByBank()
+    paymentStepPage.confirmOrder()
 
-    cy.get("#center_column > div > p > strong")
-      .should("have.text", "Your order on My Store is complete.")
+    paymentStepPage.checkTextVerification()
   });
 });
