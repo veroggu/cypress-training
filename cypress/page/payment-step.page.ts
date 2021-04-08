@@ -5,12 +5,12 @@ class PaymentStepPage {
     private haveText: string;
     private finalMessage: string;
 
-    constructor() {
+    constructor(text:string,message:string) {
         this.payBy = '#HOOK_PAYMENT > div:nth-child(1) > div > p > a > span';
         this.orderConfirmation = '#cart_navigation > button > span > i'
         this.textVerification = '#center_column > div > p > strong'
-        this.haveText = 'have.text'
-        this.finalMessage = 'Your order on My Store is complete.'
+        this.haveText = text
+        this.finalMessage = message
     }
 
     public selectPayByBank(): void {

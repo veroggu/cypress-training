@@ -3,10 +3,10 @@ import { MenuContentPage, ProductsListPage, ShopingCartPage, LoginPage, AddressS
 const menuContentPage = new MenuContentPage()
 const productsListPage = new ProductsListPage()
 const shopingCartPage = new ShopingCartPage()
-const loginPage = new LoginPage()
+const loginPage = new LoginPage("aperdomobo@gmail.com","WorkshopProtractor")
 const addressStepPage = new AddressStepPage()
 const shippingStepPage = new ShippingStepPage()
-const paymentStepPage = new PaymentStepPage()
+const paymentStepPage = new PaymentStepPage("have.text","Your order on My Store is complete.")
 
 describe("Buy a t-shirt", () => {
 

@@ -1,16 +1,16 @@
 class LoginPage {
     private emailselector: string;
     private passwordselector: string;
-    private email: string;
-    private password: string;
     private submitlog: string
+    private email:string
+    private password:string
 
-    constructor() {
+    constructor(email:string, password:string) {
         this.emailselector = '#email'
-        this.email = 'aperdomobo@gmail.com'
         this.passwordselector = '#passwd'
-        this.password = 'WorkshopProtractor'
         this.submitlog = '#SubmitLogin > span'
+        this.email = email
+        this.password = password
     }
 
     public typeEmail(): void {
